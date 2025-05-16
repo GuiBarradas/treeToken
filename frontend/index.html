@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TreeToken Interface</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light">
+  <div class="bg-animation" id="bgAnimation"></div>
+  <div class="bg-gradient"></div>
+  
+  <div class="app-container">
+    <header class="header">
+      <div class="logo-container">
+        <h1 data-text="title">TreeToken Interface</h1>
+      </div>
+      <div class="controls">
+        <div class="language-selector">
+          <i class="fas fa-globe"></i>
+          <select id="languageSelect">
+            <option value="pt" selected>🇧🇷 PT</option>
+            <option value="en">🇺🇸 EN</option>
+          </select>
+        </div>
+        <button id="themeToggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+        <button id="connectBtn" class="connect-btn">
+          <span class="connect-icon"><i class="fas fa-wallet"></i></span>
+          <span class="connect-text" data-text="connect">Conectar MetaMask</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="wallet-info">
+        <p id="walletAddress" data-text="wallet">Carteira: não conectada</p>
+      </div>
+
+      <div class="card info-card">
+        <h2 data-text="info">🔍 Informações</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <p data-text="name">Nome:</p>
+            <span id="tokenName" class="token-value">...</span>
+          </div>
+          <div class="info-item">
+            <p data-text="symbol">Símbolo:</p>
+            <span id="tokenSymbol" class="token-value">...</span>
+          </div>
+          <div class="info-item">
+            <p data-text="supply">Total Supply:</p>
+            <span id="totalSupply" class="token-value">...</span>
+          </div>
+          <div class="info-item">
+            <p data-text="balance">Seu saldo:</p>
+            <span id="userBalance" class="token-value">...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-layout">
+        <div class="card action-card">
+          <h2 data-text="transferTitle">💸 Transferir Tokens</h2>
+          <div class="form-group">
+            <label for="transferTo" data-label="addressLabel">Endereço de destino</label>
+            <input type="text" id="transferTo" placeholder="0x..." />
+          </div>
+          <div class="form-group">
+            <label for="transferAmount" data-label="amountLabel">Quantidade</label>
+            <input type="number" id="transferAmount" placeholder="0.0" />
+          </div>
+          <button id="transferBtn" class="action-btn" data-text="transferBtn">
+            <span class="btn-text">Transferir</span>
+            <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i></span>
+            <span class="btn-done"><i class="fas fa-check"></i></span>
+          </button>
+        </div>
+
+        <div class="card action-card">
+          <h2 data-text="burnTitle">🔥 Queimar Tokens</h2>
+          <div class="form-group">
+            <label for="burnAmount" data-label="burnAmountLabel">Quantidade a queimar</label>
+            <input type="number" id="burnAmount" placeholder="0.0" />
+          </div>
+          <button id="burnBtn" class="action-btn" data-text="burnBtn">
+            <span class="btn-text">Queimar</span>
+            <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i></span>
+            <span class="btn-done"><i class="fas fa-check"></i></span>
+          </button>
+        </div>
+      
+        <div class="card action-card airdrop-card">
+          <h2 data-text="airdropTitle">🎁 Airdrop</h2>
+          <div class="form-group">
+            <label for="airdropList" data-label="airdropListLabel">Endereços (1 por linha, mínimo 3)</label>
+            <textarea id="airdropList" placeholder="0x...&#10;0x...&#10;0x..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="airdropAmount" data-label="airdropAmountLabel">Quantidade por endereço</label>
+            <input type="number" id="airdropAmount" placeholder="0.0" />
+          </div>
+          <button id="airdropBtn" class="action-btn" data-text="airdropBtn">
+            <span class="btn-text">Executar Airdrop</span>
+            <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i></span>
+            <span class="btn-done"><i class="fas fa-check"></i></span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>TreeToken Interface &copy; 2025</p>
+      <p>By faallDEV</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
