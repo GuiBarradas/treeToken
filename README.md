@@ -148,7 +148,7 @@ Segue o link para o endereço do contrato no EtherScan
 - Troca de idioma (Português/Inglês)
 - Inputs com placeholders dinâmicos
 - Botão de conexão com feedback visual
-
+- Alertas personalizados
 ---
 
 ## 🔌 Integração com Alchemy
@@ -171,7 +171,7 @@ O provedor Alchemy é usado para leitura e criação do contrato, enquanto a ass
 
 | Light Mode 🇧🇷 | Dark Mode 🇺🇸 |
 |---------------|--------------|
-| ![preview light](https://i.imgur.com/7bk5s9b.png) | ![preview dark](https://i.imgur.com/WOKGib6.png) |
+| ![preview light](https://i.imgur.com/LbpZkPZ.png) | ![preview dark](https://i.imgur.com/PcJJDEQ.png) |
 
 ---
 
