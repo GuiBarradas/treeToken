@@ -9,6 +9,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="light">
+  <div id="customAlertContainer" class="custom-alert-container">
+    <div class="custom-alert">
+      <div class="custom-alert-content">
+        <i class="fas fa-exclamation-circle alert-icon"></i>
+        <p id="customAlertMessage"></p>
+      </div>
+      <button class="alert-close-btn" onclick="this.parentElement.parentElement.classList.remove('show')">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
   <div class="bg-animation" id="bgAnimation"></div>
   <div class="bg-gradient"></div>
   

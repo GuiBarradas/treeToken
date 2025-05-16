@@ -11,6 +11,18 @@ const abi = [
 
 let provider, signer, contract
 
+function showCustomAlert(message) {
+  const alertContainer = document.getElementById("customAlertContainer")
+  const alertMessage = document.getElementById("customAlertMessage")
+
+  alertMessage.textContent = message
+  alertContainer.classList.add("show")
+
+  setTimeout(() => {
+    alertContainer.classList.remove("show")
+  }, 5000)
+}
+
 const translations = {
   pt: {
     title: "🌳 Interface TreeToken",
@@ -31,6 +43,12 @@ const translations = {
     airdropBtn: "Executar Airdrop",
     transferTo: "Endereço de destino",
     transferAmount: "Quantidade",
+    burnTitle: "🔥 Queimar Tokens",
+    burnBtn: "Queimar",
+    airdropTitle: "🎁 Airdrop",
+    airdropBtn: "Executar Airdrop",
+    transferTo: "Endereço de destino",
+    transferAmount: "Quantidade",
     burnAmount: "Quantidade a queimar",
     airdropList: "Endereços (1 por linha, mínimo 3)",
     airdropAmount: "Qtd por endereço",
@@ -38,7 +56,7 @@ const translations = {
     amountLabel: "Quantidade",
     burnAmountLabel: "Quantidade a queimar",
     airdropListLabel: "Endereços (1 por linha, mínimo 3)",
-    airdropAmountLabel: "Quantidade por endereço"
+    airdropAmountLabel: "Quantidade por endereço",
   },
   en: {
     title: "🌳 TreeToken Interface",
@@ -59,6 +77,12 @@ const translations = {
     airdropBtn: "Execute Airdrop",
     transferTo: "Recipient address",
     transferAmount: "Amount",
+    burnTitle: "🔥 Burn Tokens",
+    burnBtn: "Burn",
+    airdropTitle: "🎁 Airdrop",
+    airdropBtn: "Execute Airdrop",
+    transferTo: "Recipient address",
+    transferAmount: "Amount",
     burnAmount: "Amount to burn",
     airdropList: "Addresses (1 per line, min 3)",
     airdropAmount: "Amount per address",
@@ -66,8 +90,8 @@ const translations = {
     amountLabel: "Amount",
     burnAmountLabel: "Amount to burn",
     airdropListLabel: "Addresses (1 per line, min 3)",
-    airdropAmountLabel: "Amount per address"
-  }
+    airdropAmountLabel: "Amount per address",
+  },
 }
 
 function clearUI() {
@@ -86,12 +110,20 @@ function clearUI() {
 document.getElementById("languageSelect").onchange = () => {
   const lang = document.getElementById("languageSelect").value
 
-  document.querySelectorAll("[data-text]").forEach((el) => {
+  document.querySelectorAll("[data-text]:not(.action-btn)").forEach((el) => {
     const key = el.getAttribute("data-text")
-    if (el.classList.contains("btn-text") || el.classList.contains("connect-text")) {
+    if (el.classList.contains("connect-text")) {
       el.innerText = translations[lang][key]
     } else {
       el.innerText = translations[lang][key]
+    }
+  })
+
+  document.querySelectorAll(".action-btn").forEach((btn) => {
+    const key = btn.getAttribute("data-text")
+    const btnTextSpan = btn.querySelector(".btn-text")
+    if (btnTextSpan && key) {
+      btnTextSpan.innerText = translations[lang][key]
     }
   })
 
@@ -135,10 +167,10 @@ document.getElementById("connectBtn").onclick = async () => {
       contract = new ethers.Contract(contractAddress, abi, signer)
       await loadTokenInfo()
     } catch (err) {
-      alert("Erro ao conectar carteira: " + err.message)
+      showCustomAlert("Erro ao conectar carteira: " + err.message)
     }
   } else {
-    alert("MetaMask não detectado.")
+    showCustomAlert("MetaMask não detectado.")
   }
 }
 
@@ -169,7 +201,7 @@ document.getElementById("transferBtn").onclick = async () => {
 
   try {
     if (!ethers.utils.isAddress(to.value.trim())) {
-      alert("Endereço de destino inválido.")
+      showCustomAlert("Endereço de destino inválido.")
       return
     }
 
@@ -184,7 +216,7 @@ document.getElementById("transferBtn").onclick = async () => {
     amount.value = ""
   } catch (err) {
     btn.classList.remove("loading")
-    alert("Erro ao transferir: " + err.message)
+    showCustomAlert("Erro ao transferir: " + err.message)
   }
 }
 
@@ -203,7 +235,7 @@ document.getElementById("burnBtn").onclick = async () => {
     amount.value = ""
   } catch (err) {
     btn.classList.remove("loading")
-    alert("Erro ao queimar: " + err.message)
+    showCustomAlert("Erro ao queimar: " + err.message)
   }
 }
 
@@ -217,7 +249,7 @@ document.getElementById("airdropBtn").onclick = async () => {
     const recipients = rawList.map((addr) => addr.trim()).filter((addr) => ethers.utils.isAddress(addr))
 
     if (recipients.length < 3) {
-      alert("Você precisa de pelo menos 3 endereços válidos.")
+      showCustomAlert("Você precisa de pelo menos 3 endereços válidos.")
       return
     }
 
@@ -232,6 +264,51 @@ document.getElementById("airdropBtn").onclick = async () => {
     amount.value = ""
   } catch (err) {
     btn.classList.remove("loading")
-    alert("Erro no airdrop: " + err.message)
+    showCustomAlert("Erro no airdrop: " + err.message)
   }
 }
+
+function initBackgroundAnimation() {
+  const bgAnimation = document.getElementById("bgAnimation")
+  bgAnimation.innerHTML = ""
+
+  const isDark = document.body.classList.contains("dark")
+  const particleCount = window.innerWidth < 768 ? 30 : 50
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement("div")
+    particle.classList.add("particle")
+
+    const size = Math.random() * 10 + 5
+    const posX = Math.random() * window.innerWidth
+    const posY = Math.random() * window.innerHeight
+    const delay = Math.random() * 5
+    const duration = Math.random() * 20 + 10
+    const opacity = Math.random() * 0.3 + 0.1
+
+    particle.style.width = `${size}px`
+    particle.style.height = `${size}px`
+    particle.style.left = `${posX}px`
+    particle.style.top = `${posY}px`
+    particle.style.opacity = opacity.toString()
+    particle.style.animation = `floatParticle ${duration}s linear ${delay}s infinite`
+
+    if (isDark) {
+      particle.style.background = `rgba(0, 204, 102, ${opacity})`
+      particle.style.boxShadow = `0 0 ${size}px rgba(0, 204, 102, 0.5)`
+    } else {
+      particle.style.background = `rgba(0, 153, 77, ${opacity})`
+      particle.style.boxShadow = `0 0 ${size}px rgba(0, 153, 77, 0.3)`
+    }
+
+    bgAnimation.appendChild(particle)
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initBackgroundAnimation)
+
+document.getElementById("themeToggle").addEventListener("click", () => {
+  setTimeout(initBackgroundAnimation, 100)
+})
+
+window.addEventListener("resize", initBackgroundAnimation)
