@@ -27,7 +27,7 @@ const translations = {
   pt: {
     title: "🌳 Interface TreeToken",
     connect: "Conectar MetaMask",
-    connectedBtn: "✅ Conectado",
+    connectedBtn: "Conectado",
     wallet: "Carteira: não conectada",
     walletConnected: "Carteira:",
     info: "🔍 Informações",
@@ -61,7 +61,7 @@ const translations = {
   en: {
     title: "🌳 TreeToken Interface",
     connect: "Connect MetaMask",
-    connectedBtn: "✅ Connected",
+    connectedBtn: "Connected",
     wallet: "Wallet: not connected",
     walletConnected: "Wallet:",
     info: "🔍 Token Info",
