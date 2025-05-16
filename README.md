@@ -65,7 +65,12 @@ PRIVATE_KEY=SUA_PRIVATE_KEY_SEM_0x
 
 ---
 
-## 📤 Deploy do Contrato
+## 📰 Endereço do Contrato
+
+Segue o link para o endereço do contrato no EtherScan
+[Contrato](https://sepolia.etherscan.io/address/0x260c26896fa05548b3daEdbDe67595A47b50a037)
+
+## 📤 Deploy do Contrato (Caso deseje)
 
 1. Compile o contrato:
    ```bash
@@ -180,7 +185,7 @@ O provedor Alchemy é usado para leitura e criação do contrato, enquanto a ass
 ## 🙌 Autor
 
 **Guilherme M. Barradas**  
-[LinkedIn](https://www.linkedin.com/in/seu-perfil) • [GitHub](https://github.com/seu-usuario)
+[LinkedIn](https://www.linkedin.com/in/guilherme-barradas-47781820b/) • [GitHub](https://github.com/GuiBarradas)
 
 ---
 
