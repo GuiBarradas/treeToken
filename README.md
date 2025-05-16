@@ -171,7 +171,7 @@ O provedor Alchemy é usado para leitura e criação do contrato, enquanto a ass
 
 | Light Mode 🇧🇷 | Dark Mode 🇺🇸 |
 |---------------|--------------|
-| ![preview light](https://i.imgur.com/LbpZkPZ.png) | ![preview dark](https://i.imgur.com/PcJJDEQ.png) |
+| ![preview light](https://i.imgur.com/QeGiZKH.png) | ![preview dark](https://i.imgur.com/flgAwE4.png) |
 
 ---
 
