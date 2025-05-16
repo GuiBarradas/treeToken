@@ -681,6 +681,9 @@ textarea {
   align-items: flex-start;
   justify-content: space-between;
   animation: slideIn 0.3s ease-out;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 body.dark .custom-alert {
@@ -692,12 +695,22 @@ body.dark .custom-alert {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  flex: 1;
+  max-width: calc(100% - 30px);
 }
 
 .alert-icon {
   color: var(--primary);
   font-size: 1.5rem;
   margin-top: 2px;
+  flex-shrink: 0;
+}
+
+#customAlertMessage {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .alert-close-btn {
@@ -708,6 +721,7 @@ body.dark .custom-alert {
   font-size: 1rem;
   padding: 0;
   margin-left: 10px;
+  flex-shrink: 0;
 }
 
 body.dark .alert-close-btn {

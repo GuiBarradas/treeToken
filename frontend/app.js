@@ -14,7 +14,9 @@ let provider, signer, contract
 function showCustomAlert(message) {
   const alertContainer = document.getElementById("customAlertContainer")
   const alertMessage = document.getElementById("customAlertMessage")
-
+  if (message.length > 300) {
+    message = message.substring(0, 300) + "..."
+  }
   alertMessage.textContent = message
   alertContainer.classList.add("show")
 
